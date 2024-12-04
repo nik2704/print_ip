@@ -27,12 +27,12 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.NIK_ACCESS }}
+          GITHUB_TOKEN: ${{ secrets.MY_ACCESS_TOKEN }}
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.NIK_ACCESS }}
+          GITHUB_TOKEN: ${{ secrets.MY_ACCESS_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build/print_ip-0.0.${{ github.run_number }}-Linux.deb
