@@ -1,21 +1,25 @@
-name: Doxygen Action
+
+name: Documentation
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
+
 jobs:
-  build:
+  build-documentation:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-        
+    
+    # Build the HTML documentation
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.1.0
       with:
-        doxyfile-path: "./Doxyfile" # default is ./Doxyfile
-        working-directory: "." # default is .
+          doxyfile-path: ./Doxyfile
+          working-directory: .
     
+    # Deploy the HTML documentation to GitHub Pages
     - name: GH Pages Deployment
       uses: peaceiris/actions-gh-pages@v3
       with:
